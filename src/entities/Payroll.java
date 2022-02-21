@@ -10,7 +10,7 @@ public class Payroll {
         employees[2]=new BasePlusCommissionEmployee();
         Scanner scan = new Scanner(System.in);
 
-        for(Employee e: employees)
+        for(Employee e: employees) //get 3 worker's details
         {
             System.out.println("Enter employee's first name, last name and id");
             e.setFirstName(scan.next());
@@ -44,7 +44,7 @@ public class Payroll {
             }
         }
 
-        for(Employee e: employees)
+        for(Employee e: employees) //print the 3 worker's details
         {
             System.out.println(e.toString());
             if(e.getClass()==BasePlusCommissionEmployee.class)
