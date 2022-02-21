@@ -78,6 +78,6 @@ public class HourlyEmployee extends Employee{
     //returns the salary of the worker
     @Override
     public float earnings() {
-        return getHours()*getWage();
+        return getHours() * getWage();
     }
 }
