@@ -7,8 +7,8 @@ public class BasePlusCommissionEmployee extends CommissionEmployee{
     private float baseSalary;
 
     //constructor
-    public BasePlusCommissionEmployee(String firstName, String lastName, int id, float grossSales, int commision, float baseSalary) {
-        super(firstName, lastName, id, grossSales, commision);
+    public BasePlusCommissionEmployee(String firstName, String lastName, int id, float grossSales, int commission, float baseSalary) {
+        super(firstName, lastName, id, grossSales, commission);
         try {
             setBaseSalary(baseSalary);
         }
@@ -34,19 +34,19 @@ public class BasePlusCommissionEmployee extends CommissionEmployee{
 
     public void setBaseSalary(float baseSalary) throws Exception {
         if(baseSalary<=0)
-            throw new Exception(baseSalary+" baseSalary must be positive");
+            throw new IllegalArgumentException(baseSalary+" baseSalary must be positive");
         this.baseSalary = baseSalary;
     }
 
     @Override
     public String toString() {
         return "BasePlusCommissionEmployee{" +
-                "baseSalary=" + baseSalary +
-                ", grossSales=" + grossSales +
-                ", commision=" + commision +
-                ", firstName='" + firstName + '\'' +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", id=" + id +
+                ", grossSales=" + grossSales + '\'' +
+                ", commission=" + commission + '\'' +
+                ", baseSalary=" + baseSalary + '\'' +
                 '}';
     }
 

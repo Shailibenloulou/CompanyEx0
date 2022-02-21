@@ -5,14 +5,14 @@ import java.util.Objects;
 //the class represent a worker who receives a salary according to the profits he has brought to the company.
 public class CommissionEmployee extends Employee{
     protected float grossSales; //week's benefit
-    protected int commision; //Percentage commission
+    protected int commission; //Percentage commission
 
     //constructor
-    public CommissionEmployee(String firstName, String lastName, int id, float grossSales, int commision) {
+    public CommissionEmployee(String firstName, String lastName, int id, float grossSales, int commission) {
         super(firstName, lastName, id);
         try {
             setGrossSales(grossSales);
-            setCommision(commision);
+            setCommission(commission);
         }
         catch(Exception Ex) {
             System.out.println(Ex.getMessage());
@@ -24,7 +24,7 @@ public class CommissionEmployee extends Employee{
         //super(); default
         try {
             setGrossSales(0);
-            setCommision(0);
+            setCommission(0);
         }
         catch(Exception Ex) {
             System.out.println(Ex.getMessage());
@@ -37,28 +37,29 @@ public class CommissionEmployee extends Employee{
 
     public void setGrossSales(float grossSales) throws Exception {
         if(grossSales<=0)
-            throw new Exception(grossSales+" grossSales must be positive");
+            throw new IllegalArgumentException(grossSales+" grossSales must be positive");
         this.grossSales = grossSales;
     }
 
-    public int getCommision() {
-        return commision;
+    public int getCommission() {
+        return commission;
     }
 
-    public void setCommision(int commision) throws Exception {
-        if(commision<=0)
-            throw new Exception(commision+" commision must be positive");
-        this.commision = commision;
+    public void setCommission(int commission) throws Exception {
+        if(commission<=0)
+            throw new IllegalArgumentException(commission+" commission must be positive");
+        this.commission = commission;
     }
+
 
     @Override
     public String toString() {
         return "CommissionEmployee{" +
-                "grossSales=" + grossSales +
-                ", commision=" + commision +
-                ", firstName='" + firstName + '\'' +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", id=" + id +
+                ", grossSales=" + grossSales + '\'' +
+                ", commission=" + commission + '\'' +
                 '}';
     }
 
@@ -68,17 +69,17 @@ public class CommissionEmployee extends Employee{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         CommissionEmployee that = (CommissionEmployee) o;
-        return Float.compare(that.grossSales, grossSales) == 0 && commision == that.commision;
+        return Float.compare(that.grossSales, grossSales) == 0 && commission == that.commission;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), grossSales, commision);
+        return Objects.hash(super.hashCode(), grossSales, commission);
     }
 
     //returns the salary of the worker
     @Override
     public float earnings() {
-        return (getCommision()/100)*getGrossSales();
+        return (getCommission()/100)*getGrossSales();
     }
 }
